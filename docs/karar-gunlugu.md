@@ -85,3 +85,30 @@ Yerel Git kullanici adi/e-posta ayarlari ile GitHub hesabina push yetkisi ayni s
 ### Sonuc
 
 Yerel Git kimligi `BerkayCLK-Ag` olarak ayarlandi. GitHub push icin `BerkayCLK-Ag` hesabi altinda repo URL'si ve authentication ayrica tamamlanacak.
+
+## GitHub Remote Origin Secildi
+
+### Sebep
+
+Proje hafizasinin GitHub'da korunmasi icin yerel repository'nin uzak repository ile eslenmesi gerekiyordu.
+
+### Alternatifler
+
+- Remote eklemeden sadece lokal commit tutmak
+- Farkli bir GitHub hesabi altinda repo kullanmak
+- ZIP yedekleriyle ilerlemek
+
+### Avantajlar
+
+- Bilgi bankasi GitHub'da korunur.
+- Yerel bilgisayar arizalansa bile dokumantasyon kaybolmaz.
+- Sonraki commit ve push islemleri daha kolay hale gelir.
+
+### Dezavantajlar
+
+- Yanlis dosyalar commit edilirse gizli bilgi GitHub'a gidebilir.
+- Kod dosyalarini push etmeden once `.env`, veritabani ve cache dosyalari kontrol edilmelidir.
+
+### Sonuc
+
+Remote adresi `https://github.com/BerkayCLK-Ag/sera-akilli-sulama.git` olarak secildi ve ilk dokumantasyon push'u basariyla yapildi.

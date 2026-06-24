@@ -71,3 +71,26 @@ Git komutlarini terminalde calisir hale getirip ilk dokumantasyon commitini GitH
 ### Bir Sonraki Pratik Calisma
 
 `BerkayCLK-Ag` hesabi altinda repo URL'sini netlestirip remote eklemek ve ilk push'u yapmak.
+
+## 2026-06-25
+
+### Bugun Ne Ogrendim
+
+- GitHub repo URL'si olmadan push yapilamaz.
+- `origin`, yerel repository'nin GitHub'daki uzak kopyasina verilen yaygin isimdir.
+- `-u` parametresi branch takibini ayarlar; bundan sonra Git hangi uzak branch'e push edecegini bilir.
+
+### Bilmedigim Konular
+
+- Tum proje dosyalarini commit etmeden once hangi dosyalar gizli bilgi iceriyor?
+- `.gitignore` dosyasi backend `.env`, veritabani ve cache dosyalarini yeterince koruyor mu?
+
+### Arastirilmasi Gereken Konular
+
+- `.gitignore` iyi uygulamalari
+- Secret scanning mantigi
+- Ilk proje commitini parcalara bolme stratejisi
+
+### Bir Sonraki Pratik Calisma
+
+Tum repository icin `.gitignore` ve gizli bilgi kontrolu yapip kod dosyalarini guvenli sekilde commit etmek.

@@ -72,3 +72,25 @@ Yerel Git kullanici kimligi `BerkayCLK-Ag` ve `brkyclk16@gmail.com` olarak ayarl
 ### Sonraki Adim
 
 GitHub'da `BerkayCLK-Ag` hesabi altinda repository olusturulmali veya mevcut repo URL'si eklenmeli. Sonra dogru hesapla authentication yapilip `git remote add origin ...` ve `git push` denenmeli.
+
+## 2026-06-25
+
+### Yapilan Is
+
+GitHub remote adresi `https://github.com/BerkayCLK-Ag/sera-akilli-sulama.git` olarak eklendi. Yerel `main` branch'i `origin/main` ile eslendi ve ilk dokumantasyon commit'i GitHub'a basariyla push edildi.
+
+### Degisen Dosyalar
+
+- `docs/sera-gelisim.md`
+- `docs/ogrenme-gunlugu.md`
+- `docs/karar-gunlugu.md`
+
+### Ogrendiklerim
+
+- `git remote add origin ...` komutu yerel repository ile GitHub repository arasinda bag kurar.
+- `git push -u origin main` ilk push sirasinda yerel branch'i uzak branch ile esler.
+- Upstream eslestikten sonra sonraki push islemleri genellikle sadece `git push` ile yapilabilir.
+
+### Sonraki Adim
+
+Kod, firmware, backend ve frontend dosyalari hassas bilgi kontrolu yapildiktan sonra ayri bir commit ile GitHub'a eklenmeli.
