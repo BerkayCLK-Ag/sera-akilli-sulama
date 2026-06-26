@@ -1,0 +1,38 @@
+# GitHub Portfolyo — Otomatik Guncelleme
+
+Her ogrenme gorevi veya teknik milestone tamamlandiginda:
+
+## 1. Dokumantasyon guncelle
+
+- `docs/sera-gelisim.md` — ne yapildi
+- `docs/ogrenme-gunlugu.md` — ne ogrenildi
+- `docs/portfolio-yetkinlikler.md` — **firma dikkati ceken** yeni satir (tabloya ekle)
+
+Portfolio satiri formati:
+`| YYYY-MM-DD | Konu | Firma Degeri |`
+
+Firma degeri ornekleri: saha IoT, akilli sulama urunu, sensor kalibrasyonu, dashboard, MQTT, LoRa, uretim prototipi.
+
+## 2. README kontrol
+
+Buyuk milestone ise `README.md` ozet bolumunu guncelle (yetkinlikler, tamamlanan fazlar).
+
+## 3. Git push (kullanici izin verdiyse)
+
+```bash
+git add docs/ README.md AGENTS.md .cursor/rules/
+git commit -m "docs: <ogrenilen konu acikca>"
+git push
+```
+
+Commit mesaji genel olmasin. Ornek: `docs: ESP32 sera v3 prototip ve pompa guvenlik mantigi`
+
+## 4. Profil README
+
+`docs/github-profil-README.md` icerigini BerkayCLK-Ag/BerkayCLK-Ag reposuna yansit (repo varsa).
+
+## Yazim tonu
+
+- Turkce, profesyonel, oz
+- CV ve is basvurusuna uygun
+- Teknik terim + tarim baglami birlikte

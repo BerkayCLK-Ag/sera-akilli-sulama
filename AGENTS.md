@@ -84,3 +84,13 @@ Gorev sonunda ek rapor basliklari:
 - Guncellenen Dokumanlar
 - Git Commit
 - Push Durumu
+
+## GitHub Portfolyo Guncelleme
+
+Her ogrenme gorevinde `docs/portfolio-yetkinlikler.md` dosyasina firma odakli yeni satir eklenir.
+Detay: `.cursor/rules/github-portfolio.mdc`
+
+Kullanici push izni verdiyse gorev sonunda:
+1. `docs/portfolio-yetkinlikler.md` guncelle
+2. Buyuk milestone ise `README.md` kontrol et
+3. `git add docs/ README.md` → commit (`docs:` ile basla) → `git push`
