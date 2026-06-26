@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sera Kontrol Merkezi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <path d="M9 12l2 2 4-4"/>
+          </svg>
+        </div>
+        <div>
+          <strong>Berkay Sera</strong>
+          <span>Kontrol Merkezi</span>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <a href="#" class="nav-item active">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+          Genel Bakış
+        </a>
+        <a href="#sensors" class="nav-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          Sensörler
+        </a>
+        <a href="#controls" class="nav-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          Kontrol
+        </a>
+        <a href="#alarms" class="nav-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          Alarmlar
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <span class="version">v1.0 · Prototip</span>
+        <span class="ref">docs/mimari.md</span>
+      </div>
+    </aside>
+
+    <div class="main">
+      <header class="topbar">
+        <div class="topbar-left">
+          <h1>Berkay — Genel Bakış</h1>
+          <p class="breadcrumb">Sera Yönetimi / Canlı İzleme</p>
+        </div>
+        <div class="topbar-right">
+          <div class="meta-chip">
+            <span class="label">Son güncelleme</span>
+            <span id="lastUpdate">—</span>
+          </div>
+          <div class="meta-chip" id="apiStatusChip">
+            <span class="status-dot offline" id="apiStatusDot"></span>
+            <span id="apiStatusText">API bekleniyor</span>
+          </div>
+        </div>
+      </header>
+
+      <main class="content">
+        <section class="kpi-grid" id="sensorCards">
+          <article class="kpi-card" data-sensor="temperature">
+            <div class="kpi-header">
+              <span class="kpi-label">Ortam Sıcaklığı</span>
+              <span class="kpi-badge" id="badge-temperature">—</span>
+            </div>
+            <div class="kpi-value"><span id="val-temperature">—</span><small>°C</small></div>
+            <div class="kpi-bar"><div class="kpi-bar-fill" id="bar-temperature"></div></div>
+          </article>
+
+          <article class="kpi-card" data-sensor="humidity">
+            <div class="kpi-header">
+              <span class="kpi-label">Ortam Nemi</span>
+              <span class="kpi-badge" id="badge-humidity">—</span>
+            </div>
+            <div class="kpi-value"><span id="val-humidity">—</span><small>%</small></div>
+            <div class="kpi-bar"><div class="kpi-bar-fill" id="bar-humidity"></div></div>
+          </article>
+
+          <article class="kpi-card" data-sensor="soil_moisture">
+            <div class="kpi-header">
+              <span class="kpi-label">Toprak Nemi</span>
+              <span class="kpi-badge" id="badge-soil_moisture">—</span>
+            </div>
+            <div class="kpi-value"><span id="val-soil_moisture">—</span><small>%</small></div>
+            <div class="kpi-bar"><div class="kpi-bar-fill" id="bar-soil_moisture"></div></div>
+          </article>
+
+          <article class="kpi-card" data-sensor="light">
+            <div class="kpi-header">
+              <span class="kpi-label">Işık Seviyesi</span>
+              <span class="kpi-badge" id="badge-light">—</span>
+            </div>
+            <div class="kpi-value"><span id="val-light">—</span><small>raw</small></div>
+            <div class="kpi-bar"><div class="kpi-bar-fill" id="bar-light"></div></div>
+          </article>
+
+          <article class="kpi-card" data-sensor="water_level">
+            <div class="kpi-header">
+              <span class="kpi-label">Su Seviyesi</span>
+              <span class="kpi-badge" id="badge-water_level">—</span>
+            </div>
+            <div class="kpi-value"><span id="val-water_level">—</span><small>%</small></div>
+            <div class="kpi-bar"><div class="kpi-bar-fill" id="bar-water_level"></div></div>
+          </article>
+        </section>
+
+        <section class="dashboard-grid">
+          <div class="panel chart-panel" id="sensors">
+            <div class="panel-head">
+              <div>
+                <h2>Sensör Trendleri</h2>
+                <p>Son 24 saatlik veri akışı</p>
+              </div>
+              <div class="chart-tabs">
+                <button class="tab active" data-chart="temperature">Sıcaklık</button>
+                <button class="tab" data-chart="humidity">Nem</button>
+                <button class="tab" data-chart="soil_moisture">Toprak</button>
+              </div>
+            </div>
+            <div class="chart-wrap">
+              <canvas id="historyChart"></canvas>
+            </div>
+          </div>
+
+          <div class="side-stack">
+            <div class="panel device-panel">
+              <div class="panel-head compact">
+                <h2>Cihaz Durumu</h2>
+              </div>
+              <ul class="info-list">
+                <li>
+                  <span>Cihaz ID</span>
+                  <strong id="deviceId">greenhouse-01</strong>
+                </li>
+                <li>
+                  <span>Bağlantı</span>
+                  <strong class="status-pill offline" id="deviceConnection">Çevrimdışı</strong>
+                </li>
+                <li>
+                  <span>IP Adresi</span>
+                  <strong id="deviceIp">—</strong>
+                </li>
+                <li>
+                  <span>WiFi Ağı</span>
+                  <strong id="deviceNetwork">WIFI_ADINIZ</strong>
+                </li>
+                <li>
+                  <span>MQTT Broker</span>
+                  <strong id="mqttBroker">localhost:1883</strong>
+                </li>
+              </ul>
+            </div>
+
+            <div class="panel control-panel" id="controls">
+              <div class="panel-head compact">
+                <h2>Kontrol Paneli</h2>
+              </div>
+              <div class="controls">
+                <div class="control-block">
+                  <label>Sulama Pompası</label>
+                  <div class="btn-row">
+                    <button id="btnPumpOn" class="btn btn-primary">Aç (5 sn)</button>
+                    <button id="btnPumpOff" class="btn btn-outline">Kapat</button>
+                  </div>
+                </div>
+                <div class="control-block">
+                  <label>Servo Vana — <span id="servoAngleLabel">90</span>°</label>
+                  <input type="range" id="servoSlider" min="0" max="180" value="90">
+                  <button id="btnServoApply" class="btn btn-secondary btn-block">Açıyı Uygula</button>
+                </div>
+                <button id="btnEvaluateRules" class="btn btn-ghost btn-block">Kuralları Değerlendir</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="dashboard-grid rules-alarms">
+          <div class="panel">
+            <div class="panel-head compact">
+              <h2>Sulama Kuralları</h2>
+              <p>Otomatik sulama eşik değerleri</p>
+            </div>
+            <form id="rulesForm" class="rules-form">
+              <div class="form-grid">
+                <label>Toprak nem eşiği (%)
+                  <input type="number" name="soil_moisture_threshold" min="0" max="100" step="1">
+                </label>
+                <label>Sıcaklık alarm eşiği (°C)
+                  <input type="number" name="temperature_alarm_threshold" min="0" max="60" step="0.5">
+                </label>
+                <label>Pompa süresi (sn)
+                  <input type="number" name="pump_duration_seconds" min="1" max="60" step="1">
+                </label>
+              </div>
+              <label class="checkbox-row">
+                <input type="checkbox" name="auto_irrigation_enabled">
+                Otomatik sulama aktif
+              </label>
+              <button type="submit" class="btn btn-primary">Kuralları Kaydet</button>
+            </form>
+          </div>
+
+          <div class="panel" id="alarms">
+            <div class="panel-head compact">
+              <h2>Alarm Geçmişi</h2>
+              <p>Sistem olayları ve uyarılar</p>
+            </div>
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Zaman</th>
+                    <th>Olay</th>
+                  </tr>
+                </thead>
+                <tbody id="alarmTableBody">
+                  <tr><td colspan="2" class="empty">Henüz alarm yok</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <span>Akıllı Sera IoT Platformu</span>
+        <span>MQTT · FastAPI · Arduino · ESP8266</span>
+      </footer>
+    </div>
+  </div>
+
+  <div id="toastContainer" class="toast-container" aria-live="polite"></div>
+  <script src="/static/js/dashboard.js"></script>
+</body>
+</html>

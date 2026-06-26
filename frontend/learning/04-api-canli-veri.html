@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ders 04 — API Canlı Veri</title>
+  <link rel="stylesheet" href="css/02-ders.css">
+  <style>
+    .son-guncelleme {
+      color: #64748b;
+      font-size: 0.85rem;
+      margin: 0 0 0.5rem;
+    }
+    .api-durum {
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin: 0 0 1rem;
+      padding: 0.5rem 0.75rem;
+      border-radius: 8px;
+      display: inline-block;
+    }
+    .api-durum.bagli {
+      background: #d1fae5;
+      color: #047857;
+    }
+    .api-durum.kapali {
+      background: #fee2e2;
+      color: #dc2626;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="ust-baslik">
+    <h1>Berkay — Akıllı Sera</h1>
+    <p class="alt-yazi">Ders 04 — Backend API'den gerçek veri</p>
+  </header>
+
+  <section>
+    <h2>Canlı Sensörler</h2>
+
+    <!-- API bağlantı durumu — JS burayı günceller -->
+    <p id="api-durum" class="api-durum kapali">API kontrol ediliyor...</p>
+
+    <p class="son-guncelleme">
+      Son güncelleme: <strong id="son-guncelleme">—</strong>
+      (5 sn'de bir API'den çekilir)
+    </p>
+
+    <div class="kart-grid">
+
+      <article class="kart">
+        <p class="etiket">Ortam Sıcaklığı (DHT11)</p>
+        <p class="deger"><span id="sicaklik">--</span> <small>°C</small></p>
+        <span class="rozet rozet-normal">API</span>
+      </article>
+
+      <article class="kart">
+        <p class="etiket">Ortam Nemi (DHT11)</p>
+        <p class="deger"><span id="nem">--</span> <small>%</small></p>
+        <span class="rozet rozet-normal">API</span>
+      </article>
+
+      <article class="kart">
+        <p class="etiket">Toprak Nemi</p>
+        <p class="deger"><span id="toprak">--</span> <small>%</small></p>
+        <span class="rozet rozet-normal">API</span>
+      </article>
+
+      <article class="kart">
+        <p class="etiket">Su Seviyesi</p>
+        <p class="deger"><span id="su">--</span> <small>%</small></p>
+        <span class="rozet rozet-normal">API</span>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="not">
+    <h3>Ders 03 vs Ders 04</h3>
+    <ul>
+      <li><strong>Ders 03:</strong> JS içinde rastgele sayı (<code>Math.random</code>)</li>
+      <li><strong>Ders 04:</strong> PC'deki backend'den gerçek veri (<code>fetch</code>)</li>
+    </ul>
+
+    <h3>Veri yolu (gerçek sistem)</h3>
+    <p>DHT11 → Arduino → ESP8266 → Backend → <strong>bu sayfa</strong></p>
+
+    <h3>Ne öğrendin?</h3>
+    <ul>
+      <li><code>fetch("http://localhost:8000/api/sensors/latest")</code> — API'ye istek</li>
+      <li><code>await cevap.json()</code> — JSON cevabını oku</li>
+      <li><code>data.sensors.temperature.value</code> — sensör değerine ulaş</li>
+      <li><code>try / catch</code> — backend kapalıysa hata yakala</li>
+    </ul>
+
+    <h3>Önce yap (sırayla)</h3>
+    <ol>
+      <li><strong>start-dashboard.bat</strong> çift tıkla (backend açık kalsın)</li>
+      <li>Bu dosyayı aç: <code>03-js-canli-veri.html</code> değil → <code>04-api-canli-veri.html</code></li>
+      <li>Yeşil kutu: <strong>API bağlı ✓</strong> görünmeli</li>
+      <li>Arduino + <code>22-mqtt-publish.ino</code> çalışıyorsa gerçek DHT verisi gelir</li>
+    </ol>
+
+    <h3>Ödev — js/04-ders.js</h3>
+    <ol>
+      <li><strong>Son satır:</strong> <code>5000</code> → <code>10000</code> (10 sn'de bir çek)</li>
+      <li><strong>F12 → Console</strong> aç → <code>API cevabı:</code> logunu gör</li>
+    </ol>
+  </section>
+
+  <script src="js/04-ders.js" defer></script>
+
+</body>
+</html>

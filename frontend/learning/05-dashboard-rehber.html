@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ders 05 — Ana Dashboard Rehberi</title>
+  <link rel="stylesheet" href="css/02-ders.css">
+  <style>
+    .rehber { max-width: 720px; }
+    .rehber h2 { margin-top: 1.5rem; }
+    .dosya-kutu {
+      background: #0f172a;
+      color: #e2e8f0;
+      padding: 1rem;
+      border-radius: 10px;
+      font-family: Consolas, monospace;
+      font-size: 0.85rem;
+      line-height: 1.6;
+    }
+    .adim {
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 1rem;
+      margin: 0.75rem 0;
+    }
+    .adim strong { color: #2563eb; }
+    a.btn {
+      display: inline-block;
+      background: #2563eb;
+      color: white;
+      padding: 0.6rem 1rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      margin-top: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="ust-baslik rehber">
+    <h1>Berkay — Ders 5</h1>
+    <p class="alt-yazi">Ana dashboard nasıl çalışır?</p>
+  </header>
+
+  <section class="rehber">
+
+    <div class="adim">
+      <strong>Ders 4 sonucun normal mi?</strong>
+      <p>Evet. <code>sensors: {}</code> = backend çalışıyor ama Arduino henüz veri göndermiyor.
+      DHT + ESP bağlayınca dolacak.</p>
+    </div>
+
+    <h2>Öğrenme yolculuğun</h2>
+    <ul>
+      <li><strong>Ders 1</strong> → HTML kart iskeleti</li>
+      <li><strong>Ders 2</strong> → CSS görünüm</li>
+      <li><strong>Ders 3</strong> → JS rastgele sayı</li>
+      <li><strong>Ders 4</strong> → API'den gerçek veri (<code>fetch</code>)</li>
+      <li><strong>Ders 5</strong> → Ana dashboard dosyaları ← şimdi buradasın</li>
+    </ul>
+
+    <h2>Ana dashboard = 3 dosya</h2>
+    <div class="dosya-kutu">
+frontend/
+├── index.html        ← HTML (kartlar, menü, tablo)
+├── css/style.css     ← CSS (kurumsal tasarım)
+└── js/dashboard.js   ← JS (API + grafik + pompa)
+    </div>
+
+    <p>Ders 1–4'te küçük parçaları öğrendin. Ana panel aynı mantık, sadece daha büyük.</p>
+
+    <h2>Ders 4 vs Ana dashboard</h2>
+    <table style="width:100%; border-collapse:collapse; font-size:0.9rem;">
+      <tr style="background:#f1f5f9">
+        <th style="padding:8px;text-align:left">Ders 4</th>
+        <th style="padding:8px;text-align:left">Ana dashboard</th>
+      </tr>
+      <tr>
+        <td style="padding:8px;border-bottom:1px solid #e2e8f0">04-api-canli-veri.html</td>
+        <td style="padding:8px;border-bottom:1px solid #e2e8f0">index.html</td>
+      </tr>
+      <tr>
+        <td style="padding:8px;border-bottom:1px solid #e2e8f0">js/04-ders.js</td>
+        <td style="padding:8px;border-bottom:1px solid #e2e8f0">js/dashboard.js</td>
+      </tr>
+      <tr>
+        <td style="padding:8px">file:// ile açılır</td>
+        <td style="padding:8px">localhost:8000 ile açılır</td>
+      </tr>
+    </table>
+
+    <h2>Ödev — Ana dashboard'u kişiselleştir</h2>
+
+    <div class="adim">
+      <strong>Adım 1:</strong> Cursor'da aç → <code>frontend/index.html</code>
+    </div>
+    <div class="adim">
+      <strong>Adım 2 — Satır 24:</strong> Sidebar ismini değiştir<br>
+      <code>&lt;strong&gt;Sera IoT&lt;/strong&gt;</code> → <code>&lt;strong&gt;Berkay Sera&lt;/strong&gt;</code>
+    </div>
+    <div class="adim">
+      <strong>Adım 3 — Satır 57:</strong> Üst başlık<br>
+      <code>&lt;h1&gt;Genel Bakış&lt;/h1&gt;</code> → <code>&lt;h1&gt;Berkay — Genel Bakış&lt;/h1&gt;</code>
+    </div>
+    <div class="adim">
+      <strong>Adım 4:</strong> Ctrl+S kaydet
+    </div>
+    <div class="adim">
+      <strong>Adım 5:</strong> start-dashboard.bat çalışsın → tarayıcıda aç:
+      <br><a class="btn" href="http://localhost:8000" target="_blank">http://localhost:8000</a>
+      <br><small>(Buton çalışmazsa adresi elle yaz)</small>
+    </div>
+    <div class="adim">
+      <strong>Adım 6:</strong> F5 yenile → sidebar'da "Berkay Sera" gör
+    </div>
+
+    <h2>Sonraki adım (Ders 6)</h2>
+    <p>Arduino + DHT11 + ESP → <code>22-mqtt-publish.ino</code> → dashboard'da gerçek sıcaklık/nem.</p>
+
+  </section>
+
+</body>
+</html>

@@ -1,0 +1,20 @@
+---
+description: "Sera projesi calisma sozlesmesi — Turkce, oz, token dostu"
+alwaysApply: true
+---
+
+# Sera — calisma sozlesmesi
+
+## Iletisim
+- Turkce yaz. Donanim/kurulumda adim adim ogret; diger islerde kisa ve net ol.
+- Gereksiz tekrar ve uzun ozet ekleme. Kullanici sorarsa detay ver.
+- Kod: en kucuk dogru diff. Ilgisiz dosyaya dokunma.
+
+## Proje
+- Backend: `start-dashboard.bat` → http://localhost:8000
+- Firmware: `firmware/arduino/learning/22-mqtt-publish/` seri 9600
+- PC IP (ipconfig) ≠ ESP IP. v6+ UDP otomatik PC bulur.
+- Pinler: ESP D2/D3, DHT D4, toprak A0, role D5, ESP 3.3V
+
+## Ek kurallar (ihtiyac olunca)
+Chat'te yaz: @books-clean-code @books-refactoring @books-release-it @books-pragmatic

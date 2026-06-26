@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ders 03 — JavaScript Canlı Veri</title>
+
+  <!-- Ders 02 CSS'ini tekrar kullanıyoruz -->
+  <link rel="stylesheet" href="css/02-ders.css">
+
+  <style>
+    /* Ders 03'e özel küçük stil */
+    .son-guncelleme {
+      color: #64748b;
+      font-size: 0.85rem;
+      margin: 0 0 1rem;
+    }
+    .son-guncelleme strong {
+      color: #2563eb;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="ust-baslik">
+    <h1>Berkay — Akıllı Sera</h1>
+    <p class="alt-yazi">Ders 03 — JavaScript ile canlı veri</p>
+  </header>
+
+  <section>
+    <h2>Canlı Sensörler</h2>
+
+    <!--
+      DERS 03 farkı: sayılara id verdik
+      id = benzersiz isim → JavaScript bu isimle elementi bulur
+      Örnek: id="sicaklik" → js/03-ders.js içinde getElementById("sicaklik")
+    -->
+    <p class="son-guncelleme">
+      Son güncelleme: <strong id="son-guncelleme">—</strong>
+      (her 3 saniyede otomatik yenilenir)
+    </p>
+
+    <div class="kart-grid">
+
+      <article class="kart">
+        <p class="etiket">Ortam Sıcaklığı</p>
+        <p class="deger">
+          <span id="sicaklik">--</span> <small>°C</small>
+        </p>
+        <span class="rozet rozet-normal">Canlı</span>
+      </article>
+
+      <article class="kart">
+        <p class="etiket">Ortam Nemi</p>
+        <p class="deger">
+          <span id="nem">--</span> <small>%</small>
+        </p>
+        <span class="rozet rozet-normal">Canlı</span>
+      </article>
+
+      <article class="kart">
+        <p class="etiket">Toprak Nem Sensörü</p>
+        <p class="deger">
+          <span id="toprak">--</span> <small>%</small>
+        </p>
+        <span class="rozet rozet-uyari">Canlı</span>
+      </article>
+
+      <article class="kart">
+        <p class="etiket">Su Seviyesi</p>
+        <p class="deger">
+          <span id="su">--</span> <small>%</small>
+        </p>
+        <span class="rozet rozet-normal">Canlı</span>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="not">
+    <h3>Ders 03 — Ne öğrendin?</h3>
+    <ul>
+      <li><code>id="sicaklik"</code> — HTML'e benzersiz isim (etiket gibi)</li>
+      <li><code>document.getElementById("sicaklik")</code> — JS ile elementi bul</li>
+      <li><code>.textContent = "32.4"</code> — ekrandaki sayıyı değiştir</li>
+      <li><code>setInterval(fonksiyon, 3000)</code> — 3 sn'de bir tekrarla</li>
+      <li><code>&lt;script src="js/03-ders.js" defer&gt;</code> — harici JS bağlama</li>
+    </ul>
+
+    <h3>Ödev — js/03-ders.js dosyasını aç</h3>
+    <ol>
+      <li><strong>Son satır:</strong> <code>3000</code> → <code>5000</code> yap (5 sn'de bir güncelle)</li>
+      <li><strong>rastgele(28, 34)</strong> → <code>rastgele(20, 25)</code> yap (daha serin sera simülasyonu)</li>
+      <li>Kaydet → F5 → sayılar 5 sn'de bir ~20–25°C arası değişmeli</li>
+    </ol>
+  </section>
+
+  <!--
+    defer = HTML yüklendikten SONRA JS çalışsın
+    body'nin en altında veya head'de defer ile bağlanır
+  -->
+  <script src="js/03-ders.js" defer></script>
+
+</body>
+</html>

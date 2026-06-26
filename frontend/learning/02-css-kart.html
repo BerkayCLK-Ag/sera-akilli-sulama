@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ders 02 — CSS ile Kart Tasarımı</title>
+
+  <!--
+    DERS 02: CSS bağlama
+    --------------------
+    HTML dosyası ile CSS dosyası AYRI tutulur.
+    link etiketi = "şu CSS dosyasını kullan" demek.
+    href = dosya yolu (css klasöründeki 02-ders.css)
+  -->
+  <link rel="stylesheet" href="css/02-ders.css">
+</head>
+<body>
+
+  <header class="ust-baslik">
+    <h1>Berkay — Akıllı Sera</h1>
+    <p class="alt-yazi">frontend/learning/02-css-kart.html + css/02-ders.css</p>
+  </header>
+
+  <section>
+    <h2>Canlı Sensörler</h2>
+
+    <!--
+      kart-grid = CSS'te grid yaptık → kartlar yan yana dizilir
+      Ders 01'de <br> ile alt alta iniyorduk, artık gerek yok
+    -->
+    <div class="kart-grid">
+
+      <!-- Kart 1 -->
+      <article class="kart">
+        <p class="etiket">Ortam Sıcaklığı</p>
+        <p class="deger">32.4 <small>°C</small></p>
+        <span class="rozet rozet-normal">Normal</span>
+      </article>
+
+      <!-- Kart 2 -->
+      <article class="kart">
+        <p class="etiket">Ortam Nemi</p>
+        <p class="deger">47 <small>%</small></p>
+        <span class="rozet rozet-normal">Normal</span>
+      </article>
+
+      <!-- Kart 3 -->
+      <article class="kart">
+        <p class="etiket">Toprak Nem Sensörü</p>
+        <p class="deger">42 <small>%</small></p>
+        <span class="rozet rozet-uyari">Islak</span>
+      </article>
+      
+     <!-- Kart 4 -->
+     <article class="kart">
+      <p class="etiket">Su Seviyesi</p>
+      <p class="deger">78 <small>%</small></p>
+      <span class="rozet rozet-normal">Normal</span>
+    </article>
+    </div>
+  </section>
+
+  <section class="not">
+    <h3>Ders 02 — Ne öğrendin?</h3>
+    <ul>
+      <li><code>&lt;link rel="stylesheet" href="..."&gt;</code> — harici CSS bağlama</li>
+      <li><code>.kart { ... }</code> — class="kart" olan her şeye stil uygula</li>
+      <li><code>display: grid</code> — kartları ızgara gibi diz</li>
+      <li><code>color</code>, <code>background</code>, <code>border-radius</code> — renk ve köşe</li>
+      <li><code>:hover</code> — fare üzerine gelince efekt</li>
+      <li><code>:root { --yesil: ... }</code> — renk değişkeni (palet)</li>
+    </ul>
+
+    <h3>Ödev — css/02-ders.css dosyasını aç</h3>
+    <ol>
+      <li><strong>Satır 8:</strong> <code>--yesil: #059669;</code> rengini <code>#2563eb</code> (mavi) yap → kaydet → F5</li>
+      <li><strong>Satır 44-47:</strong> <code>grid-template-columns</code> satırında <code>minmax(180px</code> → <code>minmax(180px</code> yap → kartlar küçülür</li>
+      <li>4. kart ekle (HTML'de): Su Seviyesi — 78 % — rozet-normal</li>
+    </ol>
+  </section>
+
+</body>
+</html>

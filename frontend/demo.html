@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sera Kontrol Merkezi — Demo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+  <style>
+    .demo-banner {
+      background: linear-gradient(90deg, #059669, #10b981);
+      color: white;
+      text-align: center;
+      padding: 0.5rem 1rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+  <div class="demo-banner">
+    Demo modu — Python gerekmez. ESP IP: 192.168.1.195 · Veriler simüle ediliyor
+  </div>
+
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <path d="M9 12l2 2 4-4"/>
+          </svg>
+        </div>
+        <div>
+          <strong>Sera IoT</strong>
+          <span>Kontrol Merkezi</span>
+        </div>
+      </div>
+      <nav class="nav">
+        <a href="#" class="nav-item active">Genel Bakış</a>
+      </nav>
+      <div class="sidebar-footer">
+        <span class="version">Demo v1.0</span>
+      </div>
+    </aside>
+
+    <div class="main">
+      <header class="topbar">
+        <div class="topbar-left">
+          <h1>Genel Bakış</h1>
+          <p class="breadcrumb">Sera Yönetimi / Canlı İzleme (Demo)</p>
+        </div>
+        <div class="topbar-right">
+          <div class="meta-chip">
+            <span class="label">Son güncelleme</span>
+            <span id="lastUpdate">—</span>
+          </div>
+          <div class="meta-chip">
+            <span class="status-dot online" id="apiStatusDot"></span>
+            <span id="apiStatusText">Demo modu</span>
+          </div>
+        </div>
+      </header>
+
+      <main class="content">
+        <section class="kpi-grid" id="sensorCards">
+          <article class="kpi-card" data-sensor="temperature">
+            <div class="kpi-header">
+              <span class="kpi-label">Ortam Sıcaklığı</span>
+              <span class="kpi-badge" id="badge-temperature">—</span>
+            </div>
+            <div class="kpi-value"><span id="val-temperature">—</span><small>°C</small></div>
+            <div class="kpi-bar"><div class="kpi-bar-fill" id="bar-temperature"></div></div>
+          </article>
+          <article class="kpi-card" data-sensor="humidity">
+            <div class="kpi-header">
+              <span class="kpi-label">Ortam Nemi</span>
+              <span class="kpi-badge" id="badge-humidity">—</span>
+            </div>
+            <div class="kpi-value"><span id="val-humidity">—</span><small>%</small></div>
+            <div class="kpi-bar"><div class="kpi-bar-fill" id="bar-humidity"></div></div>
+          </article>
+          <article class="kpi-card" data-sensor="soil_moisture">
+            <div class="kpi-header">
+              <span class="kpi-label">Toprak Nemi</span>
+              <span class="kpi-badge" id="badge-soil_moisture">—</span>
+            </div>
+            <div class="kpi-value"><span id="val-soil_moisture">—</span><small>%</small></div>
+            <div class="kpi-bar"><div class="kpi-bar-fill" id="bar-soil_moisture"></div></div>
+          </article>
+          <article class="kpi-card" data-sensor="light">
+            <div class="kpi-header">
+              <span class="kpi-label">Işık Seviyesi</span>
+              <span class="kpi-badge" id="badge-light">—</span>
+            </div>
+            <div class="kpi-value"><span id="val-light">—</span><small>raw</small></div>
+            <div class="kpi-bar"><div class="kpi-bar-fill" id="bar-light"></div></div>
+          </article>
+          <article class="kpi-card" data-sensor="water_level">
+            <div class="kpi-header">
+              <span class="kpi-label">Su Seviyesi</span>
+              <span class="kpi-badge" id="badge-water_level">—</span>
+            </div>
+            <div class="kpi-value"><span id="val-water_level">—</span><small>%</small></div>
+            <div class="kpi-bar"><div class="kpi-bar-fill" id="bar-water_level"></div></div>
+          </article>
+        </section>
+
+        <section class="dashboard-grid">
+          <div class="panel chart-panel">
+            <div class="panel-head">
+              <div>
+                <h2>Sensör Trendleri</h2>
+                <p>Son 24 saat (simüle)</p>
+              </div>
+              <div class="chart-tabs">
+                <button class="tab active" data-chart="temperature">Sıcaklık</button>
+                <button class="tab" data-chart="humidity">Nem</button>
+                <button class="tab" data-chart="soil_moisture">Toprak</button>
+              </div>
+            </div>
+            <div class="chart-wrap">
+              <canvas id="historyChart"></canvas>
+            </div>
+          </div>
+
+          <div class="side-stack">
+            <div class="panel device-panel">
+              <div class="panel-head compact"><h2>Cihaz Durumu</h2></div>
+              <ul class="info-list">
+                <li><span>Cihaz ID</span><strong id="deviceId">greenhouse-01</strong></li>
+                <li><span>Bağlantı</span><strong class="status-pill online" id="deviceConnection">Çevrimiçi</strong></li>
+                <li><span>IP Adresi</span><strong id="deviceIp">192.168.1.195</strong></li>
+                <li><span>WiFi Ağı</span><strong id="deviceNetwork">WIFI_ADINIZ</strong></li>
+                <li><span>Mod</span><strong>Demo / Simülasyon</strong></li>
+              </ul>
+            </div>
+            <div class="panel control-panel">
+              <div class="panel-head compact"><h2>Kontrol Paneli</h2></div>
+              <div class="controls">
+                <div class="control-block">
+                  <label>Sulama Pompası</label>
+                  <div class="btn-row">
+                    <button id="btnPumpOn" class="btn btn-primary">Aç (5 sn)</button>
+                    <button id="btnPumpOff" class="btn btn-outline">Kapat</button>
+                  </div>
+                </div>
+                <div class="control-block">
+                  <label>Servo Vana — <span id="servoAngleLabel">90</span>°</label>
+                  <input type="range" id="servoSlider" min="0" max="180" value="90">
+                  <button id="btnServoApply" class="btn btn-secondary btn-block">Açıyı Uygula</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head compact"><h2>Alarm Geçmişi</h2></div>
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead><tr><th>Zaman</th><th>Olay</th></tr></thead>
+              <tbody id="alarmTableBody"></tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <span>Akıllı Sera IoT — Demo</span>
+        <span>ESP8266 bağlı · Backend henüz çalışmıyor</span>
+      </footer>
+    </div>
+  </div>
+
+  <div id="toastContainer" class="toast-container"></div>
+  <script src="js/dashboard-demo.js"></script>
+</body>
+</html>

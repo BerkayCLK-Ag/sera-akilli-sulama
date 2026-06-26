@@ -1,0 +1,131 @@
+/* DERS 02 — CSS dosyası
+   Bu dosya HTML'in GÖRÜNÜMünü ayarlar.
+   HTML = iskelet | CSS = boya, düzen, font
+*/
+
+/* --- Renk paleti (sera teması) --- */
+:root {
+  --yesil: #2563eb;
+  --yesil-acik: #d1fae5;
+  --arka-plan: #f1f5f9;
+  --kart: #ffffff;
+  --yazi-koyu: #0f172a;
+  --yazi-soluk: #64748b;
+  --kenar: #e2e8f0;
+  --uyari: #d97706;
+}
+
+/* --- Tüm sayfa --- */
+body {
+  font-family: "Segoe UI", system-ui, sans-serif;
+  background: var(--arka-plan);
+  color: var(--yazi-koyu);
+  margin: 0;
+  padding: 2rem;
+  line-height: 1.5;
+}
+
+/* --- Üst başlık alanı --- */
+.ust-baslik {
+  margin-bottom: 1.5rem;
+}
+
+.ust-baslik h1 {
+  margin: 0 0 0.25rem;
+  font-size: 1.75rem;
+}
+
+.alt-yazi {
+  color: var(--yazi-soluk);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* --- Kartları yan yana diz (grid = ızgara) --- */
+.kart-grid {
+  display: grid;
+  /* 3 sütun; ekran daralınca otomatik alt alta */
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+/* --- Tek kart --- */
+.kart {
+  background: var(--kart);
+  border: 1px solid var(--kenar);
+  border-radius: 14px;
+  padding: 1.25rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Fare üzerine gelince hafif kalksın */
+.kart:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Kart içi yazılar --- */
+.etiket {
+  color: var(--yazi-soluk);
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin: 0 0 0.5rem;
+}
+
+.deger {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--yesil);
+  margin: 0 0 0.75rem;
+  line-height: 1;
+}
+
+.deger small {
+  font-size: 1rem;
+  color: var(--yazi-soluk);
+  font-weight: 500;
+}
+
+/* --- Durum rozeti (Normal / Uyarı) --- */
+.rozet {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+}
+
+.rozet-normal {
+  background: var(--yesil-acik);
+  color: var(--yesil);
+}
+
+.rozet-uyari {
+  background: #fef3c7;
+  color: var(--uyari);
+}
+
+/* --- Alttaki ders notu kutusu --- */
+.not {
+  margin-top: 2rem;
+  padding: 1.25rem;
+  background: var(--yesil-acik);
+  border-radius: 12px;
+  border-left: 4px solid var(--yesil);
+}
+
+.not h3 {
+  margin-top: 0;
+}
+
+.not ul {
+  margin-bottom: 0;
+}
+
+.not code {
+  background: white;
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+}

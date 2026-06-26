@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ders 01 — HTML Temelleri</title>
+  <!-- Ders 02'de buraya harici CSS bağlayacağız -->
+  <style>
+    /* Geçici — sadece okunaklı olsun diye */
+    body {
+      font-family: system-ui, sans-serif;
+      background: #f1f5f9;
+      padding: 2rem;
+      line-height: 1.5;
+    }
+    .kart {
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 1.25rem;
+      max-width: 280px;
+    }
+    .deger {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #059669;
+    }
+    .etiket {
+      color: #64748b;
+      font-size: 0.9rem;
+    }
+    .not {
+      margin-top: 2rem;
+      padding: 1rem;
+      background: #ecfdf5;
+      border-radius: 8px;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!--
+    DERS 01: HTML nedir?
+    --------------------
+    HTML = sayfanın iskeleti. "Bu bir başlık", "bu bir kart" der.
+    Görünüm (renk, boyut) CSS ile; hareket/veri JavaScript ile gelir.
+  -->
+
+  <h1>Berkay — Akıllı Sera</h1>
+  <p class="etiket">Ref: frontend/learning/01-html-basics.html</p>
+
+  <!--
+    section = ilgili içeriği gruplar
+    article = bağımsız bir blok (kart gibi)
+  -->
+  <section>
+    <h2>Canlı Sensörler</h2>
+
+    <!-- Kart 1: Sıcaklık -->
+    <article class="kart">
+      <p class="etiket">Ortam Sıcaklığı</p>
+      <p class="deger">32.4 <small>°C</small></p>
+      <p class="etiket">Durum: Normal</p>
+    </article>
+
+    <br>
+
+    <!-- Kart 2: Nem -->
+    <article class="kart">
+      <p class="etiket">Ortam Nemi</p>
+      <p class="deger">47 <small>%</small></p>
+      <p class="etiket">Durum: Normal</p>
+    </article>
+
+    <br>
+
+    <!-- Kart 3: Toprak Nem -->
+    <article class="kart">
+      <p class="etiket">Toprak Nem Sensörü</p>
+      <p class="deger">42 <small>%</small></p>
+      <p class="etiket">Durum: Islak</p>
+    </article>
+
+  </section>
+
+  <!--
+    ul/li = liste
+    Bu dersin etiketleri (HTML elementleri)
+  -->
+  <section class="not">
+    <h3>Bu dosyada öğrendiklerin</h3>
+    <ul>
+      <li><strong>&lt;html&gt;</strong> — sayfanın kökü</li>
+      <li><strong>&lt;head&gt;</strong> — başlık, charset, CSS</li>
+      <li><strong>&lt;body&gt;</strong> — ekranda görünen her şey</li>
+      <li><strong>&lt;h1&gt;–&lt;h3&gt;</strong> — başlıklar (büyük → küçük)</li>
+      <li><strong>&lt;p&gt;</strong> — paragraf / metin</li>
+      <li><strong>&lt;section&gt;</strong> — bölüm</li>
+      <li><strong>&lt;article&gt;</strong> — kart / bağımsız blok</li>
+      <li><strong>class="..."</strong> — CSS/JS için isim etiketi</li>
+    </ul>
+  </section>
+
+  <!--
+    ÖDEV (kendin dene):
+    1. Üçüncü bir kart ekle: "Toprak Nemi" — %42
+    2. h1 metnini kendi adınla değiştir
+    3. Dosyayı kaydet → tarayıcıda yenile (F5)
+  -->
+
+</body>
+</html>
