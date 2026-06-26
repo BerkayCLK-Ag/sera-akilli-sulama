@@ -97,7 +97,7 @@ class GreenhouseMQTTClient:
                 "online": True,
                 "ip": ip,
                 "device_id": DEVICE_ID,
-                "wifi": "WIFI_ADINIZ",
+                "wifi": "Demo-2.4GHz",
                 "timestamp": now,
             },
         }

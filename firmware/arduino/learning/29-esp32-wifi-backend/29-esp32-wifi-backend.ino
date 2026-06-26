@@ -12,6 +12,7 @@
 #include <WiFi.h>
 #include <HTTPClient.h>
 #include <DHT.h>
+#include "../../secrets.h"
 
 // --- Pin tanımları ---
 #define DHT_PIN     4
@@ -20,12 +21,8 @@
 #define ROLE_PIN    5
 #define DHT_TYPE    DHT11
 
-// --- WiFi + Backend ---
-// BURAYA kendi WiFi bilgilerini yaz
-const char* WIFI_SSID = "WIFI_ADINIZ";
-const char* WIFI_PASS = "WIFI_SIFRENIZ";
-// Backend IP'si: ipconfig → IPv4 adresin
-const char* BACKEND_IP   = "192.168.1.XXX";
+// --- WiFi + Backend (secrets.h) ---
+const char* BACKEND_IP   = PC_IP_SABIT;
 const int   BACKEND_PORT = 8000;
 
 // --- Sulama parametreleri ---

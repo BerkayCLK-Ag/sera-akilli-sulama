@@ -8,6 +8,7 @@
 #include <LiquidCrystal.h>
 #include <DHT.h>
 #include <Servo.h>
+#include "../../secrets.h"
 
 // --- Pin tanimlari ---
 #define DHT_PIN 2
@@ -25,10 +26,8 @@
 #define ESP_RX 0
 #define ESP_TX 1
 
-// --- WiFi / MQTT (duzenleyin) ---
-const char* WIFI_SSID = "WIFI_ADINIZ";
-const char* WIFI_PASS = "WIFI_SIFRENIZ";
-const char* MQTT_BROKER = "192.168.1.100";
+// --- WiFi / MQTT (secrets.h) ---
+const char* MQTT_BROKER = PC_IP_SABIT;
 const char* DEVICE_ID = "greenhouse-01";
 
 // --- Sulama kurallari ---

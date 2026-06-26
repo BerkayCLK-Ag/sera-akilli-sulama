@@ -3,13 +3,12 @@
 // WiFi basarili -> IP kaydedilir, durum periyodik yazilir
 
 #include <SoftwareSerial.h>
+#include "../../secrets.h"
 
 const bool SWAP_PINS = false;
 
 SoftwareSerial esp(SWAP_PINS ? 3 : 2, SWAP_PINS ? 2 : 3);
 
-const char* WIFI_SSID = "WIFI_ADINIZ";
-const char* WIFI_PASS = "WIFI_SIFRENIZ";
 const char* DEVICE_ID = "greenhouse-01";
 
 long espBaud = 9600;

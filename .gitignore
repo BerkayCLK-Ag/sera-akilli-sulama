@@ -30,6 +30,7 @@ data/
 # Secrets
 .env.local
 credentials.json
+firmware/arduino/secrets.h
 
 # InfluxDB local data
 influxdb-data/

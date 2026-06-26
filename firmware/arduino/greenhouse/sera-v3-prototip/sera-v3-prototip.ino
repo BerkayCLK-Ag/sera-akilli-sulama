@@ -14,6 +14,7 @@
 #include <DHT.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
+#include "../../secrets.h"
 
 // ========== PINLER ==========
 #define DHT_PIN     4
@@ -24,15 +25,9 @@
 #define OLED_SCL    22
 #define DHT_TYPE    DHT11
 
-// ========== WiFi — DUZENLE ==========
-// ESP32 sadece 2.4 GHz WiFi'ye baglanir. 5 GHz aglari gormez.
-// Brownout riskini azaltmak icin tek SSID'ye sakin baglaniyoruz:
-// tarama yok, agresif reconnect yok, WiFi TX gucu dusuk.
-const char* WIFI_SSID = "WIFI_ADINIZ";
-const char* WIFI_PASS = "WIFI_SIFRENIZ";
+// ========== WiFi / Backend ==========
+// ESP32 sadece 2.4 GHz WiFi'ye baglanir. Ayarlar: firmware/arduino/secrets.h
 const int   BACKEND_PORT = 8000;
-// PC IP — ipconfig ile kontrol et. UDP bulamazsa bu kullanilir.
-const char* PC_IP_SABIT = "192.168.1.140";
 
 // ========== SULAMA ==========
 const int  TOPRAK_ESIK = 30;

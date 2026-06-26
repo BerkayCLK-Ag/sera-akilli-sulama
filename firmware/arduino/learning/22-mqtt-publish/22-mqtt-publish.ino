@@ -3,13 +3,12 @@
 
 #include <SoftwareSerial.h>
 #include <DHT.h>
+#include "../../secrets.h"
 
 SoftwareSerial esp(2, 3);
 DHT dht(4, DHT11);
 
-const char* WIFI_SSID = "WIFI_ADINIZ";
-const char* WIFI_PASS = "WIFI_SIFRENIZ";
-const char* PC_HOST_FALLBACK = "192.168.1.115";  // UDP basarisizsa yedek
+const char* PC_HOST_FALLBACK = PC_IP_SABIT;
 const int PC_PORT = 8000;
 const int DISCOVERY_PORT = 9999;
 

@@ -4,12 +4,11 @@
 // Payload: {"state":"on","duration":5}
 
 #include <SoftwareSerial.h>
+#include "../../secrets.h"
 
 SoftwareSerial esp(0, 1);
 
-const char* WIFI_SSID = "WIFI_ADINIZ";
-const char* WIFI_PASS = "WIFI_SIFRENIZ";
-const char* MQTT_BROKER = "192.168.1.100";
+const char* MQTT_BROKER = PC_IP_SABIT;
 const char* DEVICE_ID = "greenhouse-01";
 
 const int RELAY_PIN = 4;

@@ -46,7 +46,7 @@ function generateSensors() {
       online: true,
       ip: "192.168.1.195",
       device_id: "greenhouse-01",
-      wifi: "WIFI_ADINIZ",
+      wifi: "Demo-2.4GHz",
     },
   };
 }

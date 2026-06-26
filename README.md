@@ -25,6 +25,7 @@ start-dashboard.bat
 # Firmware (Arduino IDE)
 firmware/arduino/greenhouse/sera-v3-prototip/sera-v3-prototip.ino
 # Board: WEMOS D1 MINI ESP32 | Baud: 115200
+# WiFi ayarlari: firmware/arduino/secrets.example.h -> secrets.h kopyala
 ```
 
 ## Proje Yapısı
